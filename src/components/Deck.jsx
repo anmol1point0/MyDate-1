@@ -20,6 +20,15 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
   10}deg) rotateZ(${r}deg) scale(${s})`;
 
+function callback(i,swipeRight)
+{
+  console.log(data[i].name);
+  if(swipeRight)
+    console.log("Swiped Right on " + data[i].name)
+  else
+    console.log("Swiped Left on " + data[i].name)
+}
+
 function Deck() {
   const [gone] = useState(() => new Set());
 
@@ -44,11 +53,12 @@ function Deck() {
       if (!down && trigger)
       {
         gone.add(index);
-        console.log("Gone")
+        var swipedRight = false;
         if(xDir< 0)
-          console.log("Swiping l-l-l-lleft")
+          swipedRight = false;
         else
-          console.log("Swiping r-r-r-rright")
+          swipedRight = true;
+        callback(index,swipedRight);
       }
 
       set(i => {
@@ -72,7 +82,7 @@ function Deck() {
       if (!down && gone.size === data.length)
       {
         console.log("Finished with deck ")
-         setTimeout(() => gone.clear() || set(i => to(i)), 600);
+        //  setTimeout(() => gone.clear() || set(i => to(i)), 600);
       }
     }
   );
