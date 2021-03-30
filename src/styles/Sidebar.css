@@ -1,0 +1,13 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex: 0.25;
+    background-color: white;
+}
+.header{
+    display:flex;
+    padding: 5px;
+    justify-content: space-between;
+    border-right: 1px solid lightgray;
+    background-color: #fe3c72;
+}
